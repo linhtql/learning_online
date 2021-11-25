@@ -18,25 +18,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                @foreach ($categories as $category)
-                                <th>{{ $category->id }}</th>
-                                <th>{{ $category->name }}</th>
-                                <th>{{ $category->excerpt }}</th>
-                                <th>{{ $category->active }}</th>
-                                <th>{{ $category->created_at }}</th>
-                                <th>
-                                    <a href="/admin/categories/edit/{{ $category->id }}" 
-                                        class="btn btn-primary btn-sm">
-                                        <i class="far fa-edit"></i>
-                                    </a>
-                                    <a href="#" class="btn btn-danger btn-sm" 
-                                        onclick="removeRow('. $category->id .', '/admin/categories/destroy')">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </th>
-                            </tr>
-                            @endforeach
+                        {!! \App\Helpers\Helper::category($categories) !!}
                         </tbody>
                     </table>
                 </div>
