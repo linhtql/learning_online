@@ -14,14 +14,14 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="/home">
+                            <a class="navbar-brand" href="{{ route('/') }}">
                                 <img src="{{ asset('home/images/logo.png') }}" alt="Logo">
                             </a>
                         </div>
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
-                                <li><a href="/home">Trang Chủ</a></li>
+                                <li><a href="{{ route('/') }}">Trang Chủ</a></li>
                                 <!-- <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Khoá Học <span class="ion-ios-arrow-down"></span></a>
                                     <ul class="dropdown-menu">
@@ -29,8 +29,8 @@
                                         <li><a href="/detail-course">Chi tiết</a></li>
                                     </ul>
                                 </li> -->
-                                <li><a href="/listcourse">Khoá học</a></li>
-                                <li><a href="/listcourse">Khoá học của tôi</a></li>
+                                <li><a href="{{route ('course-list')}}">Khoá học</a></li>
+                                <li><a href="/mycourse">Khoá học của tôi</a></li>
                                 <!-- <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="ion-ios-arrow-down"></span></a>
                                     <ul class="dropdown-menu">
@@ -51,7 +51,7 @@
                                         <li><a href="pricing.html">Pricing Table</a></li>
                                     </ul>
                                 </li> -->
-                                <li><a href="/contact">Liên Hệ</a></li>
+                                <li><a href="{{ route('contact-us') }}">Liên Hệ</a></li>
                                 @guest
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Đăng Nhập') }}</a>

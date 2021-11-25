@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('content')
-<div class="container">
+<div class="container mt-50">
     <div class="row justify-content-center">
-        <div class="col-md">
+        <div class="col-md-offset-2">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
