@@ -47,15 +47,7 @@ class CategoryService
 
     public function update($category, $req):bool
     {
-        $old = $this->getBySlug($category->slug);
-        dd($old);
-        if ($req->input('name') != $category->name) {
-            $category->slug = Str::slug($req->input('name'));
-        }
-        $category->name = (string) $req->input('name');
-        $category->excerpt = (string) $req->input('excerpt');
-        $category->description = (string) $req->input('description');
-        $category->active = (int) $req->input('active');
+        $category->fill($req->input());
         $category->save();
 
         Session::flash('success', 'Cập nhật thông tin danh mục thành công!');

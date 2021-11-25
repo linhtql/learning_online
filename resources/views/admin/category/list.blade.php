@@ -26,7 +26,7 @@
                                 <th>{{ $category->active }}</th>
                                 <th>{{ $category->created_at }}</th>
                                 <th>
-                                    <a href="/admin/categories/edit/{{ $category->slug }}" 
+                                    <a href="/admin/categories/edit/{{ $category->id }}" 
                                         class="btn btn-primary btn-sm">
                                         <i class="far fa-edit"></i>
                                     </a>

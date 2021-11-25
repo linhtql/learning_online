@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +41,16 @@ Route::middleware(['auth', 'admin'])->group(function(){
             Route::post('add', [CategoryController::class, 'create']);
             Route::get('list', [CategoryController::class, 'index'])->name('category-list');
             Route::DELETE('destroy', [CategoryController::class, 'destroy']);
-            Route::get('edit/{slug}', [CategoryController::class, 'show']);
+            Route::get('edit/{category}', [CategoryController::class, 'show']);
             Route::post('edit/{category}', [CategoryController::class, 'update']);
         });
+        
+        # Course
+        Route::prefix('courses')->group(function(){
+            Route::get('add', [CourseController::class, 'index']);
+        });
+
+        # Upload
+        Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
