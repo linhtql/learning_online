@@ -53,6 +53,29 @@
           </ul>
         </li>
 
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="fas fa-align-justify"></i>
+            <p>
+              Khoá học
+              <i class="right fas fa-angle-left"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ URL::to('/admin/courses/add') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Thêm khoá học</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ URL::to('/admin/categories/list') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Xem khoá học</p>
+              </a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>

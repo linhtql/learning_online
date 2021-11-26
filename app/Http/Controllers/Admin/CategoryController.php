@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryFormRequest;
 use Illuminate\Http\Request;
 use App\Http\Services\Category\CategoryService;
+use Illuminate\Http\JsonResponse;
 
 class CategoryController extends Controller
 {
@@ -53,16 +54,15 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function show($slug)
+    public function show(Category $category)
     {
-        $category = $this->categoryService->getBySlug($slug);
         return view('admin.category.edit', [
-            'title' => 'Danh mục khoá học',
+            'title' => 'Danh mục khoá học '.$category->name,
             'category' => $category
         ]);
     }
 
-    public function update(Category $category, Request $req)
+    public function update(Category $category, CategoryFormRequest $req)
     {
         $this->categoryService->update($category, $req);
 

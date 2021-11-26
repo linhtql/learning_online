@@ -22,6 +22,8 @@ class CreateCoursesTable extends Migration
             $table->longText('description');
             $table->string('thumb');
             $table->double('price');
+            $table->double('price_sale');
+            $table->tinyInteger('active');
             $table->timestamps();
         });
     }
