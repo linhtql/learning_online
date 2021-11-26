@@ -4,7 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -36,5 +40,29 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function index()
+    {
+        return view('auth.login');
+    }
+
+    public function store(Request $req)
+    {
+        $this->validate($req, [
+            'email' => 'required|email:filter',
+            'password' => 'required'
+        ]);
+
+        if (Auth::attempt([
+            'email' => $req->input('email'),
+            'password' => $req->input('password')
+        ], $req->input('isAdmin')))
+        {
+            return redirect()->route('admin-home');
+        }
+
+        Session::flash('error', 'Email hoặc mật khẩu không chính xác!');
+        return redirect()->back()->with(['error', 'Email hoặc mật khẩu không chính xác!']);
     }
 }

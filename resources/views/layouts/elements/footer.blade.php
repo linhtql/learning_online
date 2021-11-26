@@ -12,7 +12,7 @@
                         <li><a href="#">Terms</a></li>
                     </ul>
                 </div>
-                <p class="copyright">Copyright 2018 &copy; Design & Developed by <a href="http://www.themefisher.com">themefisher.com</a>. All rights reserved.
+                <p class="copyright">Copyright {{ date('Y') }} &copy; Design & Developed by <a href="http://www.themefisher.com">themefisher.com</a>. All rights reserved.
                     <br>
                     Get More <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
                 </p>

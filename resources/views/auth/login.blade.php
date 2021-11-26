@@ -8,6 +8,7 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
+                        @include('alert')
                         @csrf
 
                         <div class="form-group row">
