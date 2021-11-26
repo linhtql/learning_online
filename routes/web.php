@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController;
@@ -21,9 +24,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::prefix('/')->group(function () {
+    Route::get('/', [MainController::class, 'index'])->name('/');
+    Route::get('/home', [MainController::class, 'index'])->name('/home');
+
+    Route::get('contact', [MainController::class, 'contact'])->name('contact-us');
+
+    Route::get('course-list', [CourseController::class, 'index'])->name('course-list');
+});
+
+Route::get('mycourse', function () {
+    return view('home.mycourse');
+});
 Route::get('/', function () {
     return view('home');
 })->name('home');
+
+Route::get('course-detail', function () {
+    return view('home.course-detail');
+});
+
 
 Auth::routes();
 
