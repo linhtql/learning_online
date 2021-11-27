@@ -55,7 +55,7 @@
 
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="fas fa-align-justify"></i>
+            <i class="fas fa-book"></i>
             <p>
               Khoá học
               <i class="right fas fa-angle-left"></i>
