@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CourseFormRequest;
+use App\Http\Services\Course\CourseService;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    protected $courseService;
+
+    public function __construct(CourseService $courseService)
+    {
+        $this->courseService = $courseService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,9 +23,7 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('admin.course.add', [
-            'title' => 'Thêm khoá học'
-        ]);
+        
     }
 
     /**
@@ -26,7 +33,10 @@ class CourseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.course.add', [
+            'title' => 'Thêm khoá học',
+            'categories' => $this->courseService->getCategory()      
+        ]);
     }
 
     /**
@@ -35,9 +45,10 @@ class CourseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CourseFormRequest $request)
     {
-        //
+        $this->courseService->store($request);
+        return redirect()->back();    
     }
 
     /**

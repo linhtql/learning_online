@@ -47,7 +47,8 @@ Route::middleware(['auth', 'admin'])->group(function(){
         
         # Course
         Route::prefix('courses')->group(function(){
-            Route::get('add', [CourseController::class, 'index']);
+            Route::get('add', [CourseController::class, 'create']);
+            Route::post('add', [CourseController::class, 'store']);
         });
 
         # Upload
