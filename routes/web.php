@@ -37,9 +37,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
         
         # Category
         Route::prefix('categories')->group(function(){
-            Route::get('add', [CategoryController::class, 'store']);
-            Route::post('add', [CategoryController::class, 'create']);
-            Route::get('list', [CategoryController::class, 'index'])->name('category-list');
+            Route::post('add', [CategoryController::class, 'store']);
+            Route::get('add', [CategoryController::class, 'create'])->name('add-category');
+            Route::get('list', [CategoryController::class, 'index'])->name('show-category');
             Route::DELETE('destroy', [CategoryController::class, 'destroy']);
             Route::get('edit/{category}', [CategoryController::class, 'show']);
             Route::post('edit/{category}', [CategoryController::class, 'update']);
@@ -47,8 +47,12 @@ Route::middleware(['auth', 'admin'])->group(function(){
         
         # Course
         Route::prefix('courses')->group(function(){
-            Route::get('add', [CourseController::class, 'create']);
+            Route::get('add', [CourseController::class, 'create'])->name('add-course');
             Route::post('add', [CourseController::class, 'store']);
+            Route::get('list', [CourseController::class, 'show'])->name('show-course');
+            Route::get('edit/{course}', [CourseController::class, 'edit']);
+            Route::post('edit/{course}', [CourseController::class, 'update']);
+            Route::DELETE('destroy', [CourseController::class, 'destroy']);
         });
 
         # Upload
