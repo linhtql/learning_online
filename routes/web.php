@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -33,16 +31,6 @@ Route::prefix('/')->group(function () {
     Route::get('course-list', [CourseController::class, 'index'])->name('course-list');
 });
 
-Route::get('mycourse', function () {
-    return view('home.mycourse');
-});
-Route::get('/', function () {
-    return view('home');
-})->name('home');
-
-Route::get('course-detail', function () {
-    return view('home.course-detail');
-});
 
 
 Auth::routes();
@@ -51,12 +39,12 @@ Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
 
 # Admin and family
-Route::middleware(['auth', 'admin'])->group(function(){
-    Route::prefix('admin')->group(function(){
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::get('home', [AdminController::class, 'index'])->name('admin-home');
-        
+
         # Category
-        Route::prefix('categories')->group(function(){
+        Route::prefix('categories')->group(function () {
             Route::get('add', [CategoryController::class, 'store']);
             Route::post('add', [CategoryController::class, 'create']);
             Route::get('list', [CategoryController::class, 'index'])->name('category-list');
@@ -64,9 +52,9 @@ Route::middleware(['auth', 'admin'])->group(function(){
             Route::get('edit/{category}', [CategoryController::class, 'show']);
             Route::post('edit/{category}', [CategoryController::class, 'update']);
         });
-        
+
         # Course
-        Route::prefix('courses')->group(function(){
+        Route::prefix('courses')->group(function () {
             Route::get('add', [CourseController::class, 'create']);
             Route::post('add', [CourseController::class, 'store']);
         });
