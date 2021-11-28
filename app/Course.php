@@ -7,9 +7,19 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Course extends Model
 {
-    
+    protected $fillable = [
+        'name',
+        'slug',
+        'id_category',
+        'excerpt',
+        'description',
+        'thumb',
+        'price',
+        'price_sale',
+        'active'
+    ];
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasOne(Category::class, 'id', 'id_category');
     }
 }

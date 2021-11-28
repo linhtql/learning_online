@@ -39,13 +39,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ URL::to('/admin/categories/add') }}" class="nav-link">
+              <a href="{{ route('add-category') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm danh mục</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ URL::to('/admin/categories/list') }}" class="nav-link">
+              <a href="{{ route('show-category') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Xem danh mục</p>
               </a>
@@ -55,7 +55,7 @@
 
         <li class="nav-item">
           <a href="#" class="nav-link">
-            <i class="fas fa-align-justify"></i>
+            <i class="fas fa-book"></i>
             <p>
               Khoá học
               <i class="right fas fa-angle-left"></i>
@@ -63,13 +63,13 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="{{ URL::to('/admin/courses/add') }}" class="nav-link">
+              <a href="{{ route('add-course') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Thêm khoá học</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="{{ URL::to('/admin/categories/list') }}" class="nav-link">
+              <a href="{{ route('show-course') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Xem khoá học</p>
               </a>
