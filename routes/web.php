@@ -44,19 +44,35 @@ Route::middleware(['auth', 'admin'])->group(function () {
         Route::get('home', [AdminController::class, 'index'])->name('admin-home');
 
         # Category
+<<<<<<< HEAD
         Route::prefix('categories')->group(function () {
             Route::get('add', [CategoryController::class, 'store']);
             Route::post('add', [CategoryController::class, 'create']);
             Route::get('list', [CategoryController::class, 'index'])->name('category-list');
+=======
+        Route::prefix('categories')->group(function(){
+            Route::post('add', [CategoryController::class, 'store']);
+            Route::get('add', [CategoryController::class, 'create'])->name('add-category');
+            Route::get('list', [CategoryController::class, 'index'])->name('show-category');
+>>>>>>> c21c7c125b4c7f8ad8b0a3c2fbc1c4ba53522f3b
             Route::DELETE('destroy', [CategoryController::class, 'destroy']);
             Route::get('edit/{category}', [CategoryController::class, 'show']);
             Route::post('edit/{category}', [CategoryController::class, 'update']);
         });
 
         # Course
+<<<<<<< HEAD
         Route::prefix('courses')->group(function () {
             Route::get('add', [CourseController::class, 'create']);
+=======
+        Route::prefix('courses')->group(function(){
+            Route::get('add', [CourseController::class, 'create'])->name('add-course');
+>>>>>>> c21c7c125b4c7f8ad8b0a3c2fbc1c4ba53522f3b
             Route::post('add', [CourseController::class, 'store']);
+            Route::get('list', [CourseController::class, 'show'])->name('show-course');
+            Route::get('edit/{course}', [CourseController::class, 'edit']);
+            Route::post('edit/{course}', [CourseController::class, 'update']);
+            Route::DELETE('destroy', [CourseController::class, 'destroy']);
         });
 
         # Upload
