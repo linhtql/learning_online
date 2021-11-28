@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\CourseController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -43,15 +41,14 @@ Route::get('course-detail', function () {
     return view('home.course-detail');
 });
 
-
 Auth::routes();
 
 Route::get('login', [LoginController::class, 'index'])->name('login');
 Route::post('login', [LoginController::class, 'store']);
 
 # Admin and family
-Route::middleware(['auth', 'admin'])->group(function(){
-    Route::prefix('admin')->group(function(){
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::prefix('admin')->group(function () {
         Route::get('home', [AdminController::class, 'index'])->name('admin-home');
         
         # Category
@@ -63,7 +60,7 @@ Route::middleware(['auth', 'admin'])->group(function(){
             Route::get('edit/{category}', [CategoryController::class, 'show']);
             Route::post('edit/{category}', [CategoryController::class, 'update']);
         });
-        
+
         # Course
         Route::prefix('courses')->group(function(){
             Route::get('add', [AdminCourseController::class, 'create'])->name('add-course');
