@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Routing\RouteRegistrar;
@@ -65,12 +66,12 @@ Route::middleware(['auth', 'admin'])->group(function(){
         
         # Course
         Route::prefix('courses')->group(function(){
-            Route::get('add', [CourseController::class, 'create'])->name('add-course');
-            Route::post('add', [CourseController::class, 'store']);
-            Route::get('list', [CourseController::class, 'show'])->name('show-course');
-            Route::get('edit/{course}', [CourseController::class, 'edit']);
-            Route::post('edit/{course}', [CourseController::class, 'update']);
-            Route::DELETE('destroy', [CourseController::class, 'destroy']);
+            Route::get('add', [AdminCourseController::class, 'create'])->name('add-course');
+            Route::post('add', [AdminCourseController::class, 'store']);
+            Route::get('list', [AdminCourseController::class, 'show'])->name('show-course');
+            Route::get('edit/{course}', [AdminCourseController::class, 'edit']);
+            Route::post('edit/{course}', [AdminCourseController::class, 'update']);
+            Route::DELETE('destroy', [AdminCourseController::class, 'destroy']);
         });
 
         # Upload

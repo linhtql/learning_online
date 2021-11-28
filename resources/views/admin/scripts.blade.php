@@ -16,6 +16,14 @@
 <!-- ChartJS -->
 <script src="/admin/plugins/chart.js/Chart.min.js"></script>
 <script src="/admin/dist/js/pages/dashboard2.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/admin/js/app.js"></script>
+
+<script type="text/javascript">
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+
 @yield('script')

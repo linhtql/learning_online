@@ -87,6 +87,6 @@ class CourseService
             return false;
         }
 
-        return true;
+        return Course::where('id', $req->input('id'))->delete();
     }
 }

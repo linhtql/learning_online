@@ -66,6 +66,6 @@ class CategoryController extends Controller
     {
         $this->categoryService->update($category, $req);
 
-        return redirect()->route('category-list');
+        return redirect()->route('show-category');
     }
 }
