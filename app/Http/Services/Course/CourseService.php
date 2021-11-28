@@ -59,4 +59,34 @@ class CourseService
 
         return false;
     }
+
+    public function getCourse()
+    {
+        return Course::with('category')
+                     ->where('active', 1)
+                     ->orderByDesc('id')->get();
+    }
+
+    public function update($course, $request)
+    {
+        $course->fill($request->input());
+        $course->save();
+
+        Session::flash('success', 'Cập nhật thông tin danh mục thành công!');
+
+        return true;
+    }
+
+    public function destroy($req)
+    {
+        $course = Course::where('id', $req->input('id'))->first();
+
+        if(!$course){
+            Session::flash('error', 'Xoá lỗi, vui lòng kiểm tra lại !');
+
+            return false;
+        }
+
+        return true;
+    }
 }

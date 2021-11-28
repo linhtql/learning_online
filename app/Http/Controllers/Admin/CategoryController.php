@@ -17,14 +17,14 @@ class CategoryController extends Controller
     {
         $this->categoryService = $categoryService;
     }
-    public function store()
+    public function create()
     {
         return view('admin.category.add', [
             'title' => 'Thêm danh mục'
         ]);
     }
 
-    public function create(CategoryFormRequest $req)
+    public function store(CategoryFormRequest $req)
     {
         $this->categoryService->create($req);
         return redirect()->back();
