@@ -69,7 +69,19 @@ class CourseService
 
     public function update($course, $request)
     {
-        $course->fill($request->input());
+        if ($course->name != $request->input('name'))
+        {
+            $course->slug = Str::slug($request->input('name'));
+        }
+
+        $course->name = $request->input('name');
+        $course->active = $request->input('active');
+        $course->id_category = $request->input('id_category');
+        $course->price = $request->input('price');
+        $course->price_sale = $request->input('price_sale');
+        $course->excerpt = $request->input('excerpt');
+        $course->description = $request->input('description');
+        
         $course->save();
 
         Session::flash('success', 'Cập nhật thông tin danh mục thành công!');
