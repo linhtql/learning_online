@@ -113,6 +113,7 @@ class CourseService
         $course->price = $request->input('price');
         $course->price_sale = $request->input('price_sale');
         $course->excerpt = $request->input('excerpt');
+        $course->thumb = $request->input('thumb');
         $course->description = $request->input('description');
         
         $course->save();
