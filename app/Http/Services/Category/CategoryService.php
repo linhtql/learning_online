@@ -45,9 +45,17 @@ class CategoryService
         return false;
     }
 
-    public function update($category, $req):bool
+    public function update($category, $req)
     {
-        $category->fill($req->input());
+        if ($category->name != $req->input('name')){
+            $category->slug = Str::slug($req->input('name'));
+        }
+
+        $category->name = $req->input('name');
+        $category->active = $req->input('active');
+        $category->excerpt = $req->input('excerpt');
+        $category->description = $req->input('description');
+        
         $category->save();
 
         Session::flash('success', 'Cập nhật thông tin danh mục thành công!');
