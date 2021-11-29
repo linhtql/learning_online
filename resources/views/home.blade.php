@@ -1,5 +1,4 @@
 @extends('layouts.main')
-@section('title','Học trực tuyến')
 <!-- Slider Start -->
 @section('content')
 <section class="page-title bg-2">
@@ -9,7 +8,7 @@
                 <div class="block">
                     <h1 class="animated fadeInUp">Học mọi lúc,mọi nơi</h1>
                     <p class="animated fadeInUp">Chúng tôi là một tổ chức phi lợi nhuận với sứ mệnh cung cấp nền giáo dục miễn phí, đẳng cấp thế giới cho mọi người, ở bất kỳ đâu.</p>
-                    <a href="{{route ('course-list')}}" class="btn btn-main animated fadeInUp">Các khoá học</a>
+                    <a href="course-list/1/lap-trinh.html" class="btn btn-main animated fadeInUp">Các khoá học</a>
                 </div>
             </div>
         </div>
@@ -64,177 +63,41 @@
             <div class="section-title">
                 <h2 class="text-center">Khoá Học Bán Chạy Nhất</h2>
             </div>
+            @foreach($courseSelling as $cs)
+            <div class="col-md-6 ">
+                <div class="post">
+                    <div class="post-thumb">
+                        <a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html">
+                            <img class="img-responsive" src="{{$cs->thumb}}" alt="">
+                        </a>
+                    </div>
+                    <h3 class="post-title"><a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html">{{$cs->name}}</a></h3>
+                    <div class="post-meta">
+                        <ul>
+                            <li>
+                                <i class="ion-calendar"></i> {{$cs->updated_at->diffForHumans()}}
+                            </li>
+                            <li>
+                                <i class="ion-android-people"></i> POSTED BY ADMIN
+                            </li>
+                            <li>
+                                <a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html"><i class="ion-pricetags">{{$cs->category->name}}</i></a>
+                            </li>
 
-            <div class="col-md-6 ">
-                <div class="post">
-                    <div class="post-thumb">
-                        <a href="blog-single.html">
-                            <img class="img-responsive" src="/home/images/blog/blog-post-1.jpg" alt="">
-                        </a>
-                    </div>
-                    <h3 class="post-title"><a href="">How To Wear Bright Shoes</a></h3>
-                    <div class="post-meta">
-                        <ul>
-                            <li>
-                                <i class="ion-calendar"></i> 20, MAR 2017
-                            </li>
-                            <li>
-                                <i class="ion-android-people"></i> POSTED BY ADMIN
-                            </li>
-                            <li>
-                                <a href=""><i class="ion-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
-                            </li>
-
                         </ul>
                     </div>
                     <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum
-                            asperiores vel aperiam, veniam eum nulla. Maxime cum magnam, adipisci architecto quibusdam cumque veniam
-                            fugiat quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vitae ab doloremque accusamus
-                            sit, eos dolorum officiis a perspiciatis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Quod, facere. </p>
-                        <a href="blog-single.html" class="btn btn-main">Read More</a>
+                        <p>{{$cs->excerpt}}</p>
+                        <a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html" class="btn btn-main">Xem thêm...</a>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 ">
-                <div class="post">
-                    <div class="post-thumb">
-                        <a href="blog-single.html">
-                            <img class="img-responsive" src="/home/images/blog/blog-post-2.jpg" alt="">
-                        </a>
-                    </div>
-                    <h3 class="post-title"><a href="blog-single.html">Two Ways To Wear Straight Shoes</a></h3>
-                    <div class="post-meta">
-                        <ul>
-                            <li>
-                                <i class="ion-calendar"></i> 20, MAR 2017
-                            </li>
-                            <li>
-                                <i class="ion-android-people"></i> POSTED BY ADMIN
-                            </li>
-                            <li>
-                                <a href=""><i class="ion-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum
-                            asperiores vel aperiam, veniam eum nulla. Maxime cum magnam, adipisci architecto quibusdam cumque veniam
-                            fugiat quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vitae ab doloremque accusamus
-                            sit, eos dolorum officiis a perspiciatis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing
-                            elit. Quod, facere</p>
-                        <a href="blog-single.html" class="btn btn-main">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="post">
-                    <div class="post-thumb">
-                        <a href="blog-single.html">
-                            <img class="img-responsive" src="/home/images/blog/blog-post-3.jpg" alt="">
-                        </a>
-                    </div>
-                    <h3 class="post-title"><a href="blog-single.html">Making A Denim Statement</a></h3>
-                    <div class="post-meta">
-                        <ul>
-                            <li>
-                                <i class="ion-calendar"></i> 20, MAR 2017
-                            </li>
-                            <li>
-                                <i class="ion-android-people"></i> POSTED BY ADMIN
-                            </li>
-                            <li>
-                                <a href=""><i class="ion-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla. Maxime cum magnam, adipisci architecto quibusdam cumque veniam fugiat quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vitae ab doloremque accusamus sit, eos dolorum officiis a perspiciatis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, facere</p>
-                        <a href="blog-single.html" class="btn btn-main">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="post">
-                    <div class="post-thumb">
-                        <a href="blog-single.html">
-                            <img class="img-responsive" src="/home/images/blog/blog-post-4.jpg" alt="">
-                        </a>
-                    </div>
-                    <h3 class="post-title"><a href="blog-single.html">Standard Text Post</a></h3>
-                    <div class="post-meta">
-                        <ul>
-                            <li>
-                                <i class="ion-calendar"></i> 20, MAR 2017
-                            </li>
-                            <li>
-                                <i class="ion-android-people"></i> POSTED BY ADMIN
-                            </li>
-                            <li>
-                                <a href=""><i class="ion-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla. Maxime cum magnam, adipisci architecto quibusdam cumque veniam fugiat quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vitae ab doloremque accusamus sit, eos dolorum officiis a perspiciatis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, facere</p>
-                        <a href="blog-single.html" class="btn btn-main">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="post">
-                    <div class="post-media post-media-audio">
-                        <iframe height="390" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/115637399&amp;color=ff5500&amp;auto_play=false&amp;show_artwork=true" class="DRAGDIS_iframe"></iframe>
-                    </div>
-                    <h3 class="post-title"><a href="blog-single.html">Standard Audio Post</a></h3>
-                    <div class="post-meta">
-                        <ul>
-                            <li>
-                                <i class="ion-calendar"></i> 20, MAR 2017
-                            </li>
-                            <li>
-                                <i class="ion-android-people"></i> POSTED BY ADMIN
-                            </li>
-                            <li>
-                                <a href=""><i class="ion-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla. Maxime cum magnam, adipisci architecto quibusdam cumque veniam fugiat quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vitae ab doloremque accusamus sit, eos dolorum officiis a perspiciatis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, facere</p>
-                        <a href="blog-single.html" class="btn btn-main">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="post">
-                    <div class="post-media post-media-audio">
-                        <iframe width="100%" height="400" src="https://www.youtube.com/embed/Ljik3zsGNF4" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                    <h3 class="post-title"><a href="blog-single.html">Standard Video Post</a></h3>
-                    <div class="post-meta">
-                        <ul>
-                            <li>
-                                <i class="ion-calendar"></i> 20, MAR 2017
-                            </li>
-                            <li>
-                                <i class="ion-android-people"></i> POSTED BY ADMIN
-                            </li>
-                            <li>
-                                <a href=""><i class="ion-pricetags"></i> LIFESTYLE</a>,<a href=""> TRAVEL</a>, <a href="">FASHION</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="post-content">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit vitae placeat ad architecto nostrum asperiores vel aperiam, veniam eum nulla. Maxime cum magnam, adipisci architecto quibusdam cumque veniam fugiat quae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio vitae ab doloremque accusamus sit, eos dolorum officiis a perspiciatis aliquid. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod, facere</p>
-                        <a href="blog-single.html" class="btn btn-main">Read More</a>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="text-center">
-            <ul class="pagination post-pagination">
+            {{$courseSelling->links()}}
+
+            <!-- <ul class="pagination post-pagination">
                 <li><a href="#">Prev</a>
                 </li>
                 <li class="active"><a href="#">1</a>
@@ -249,7 +112,7 @@
                 </li>
                 <li><a href="#">Next</a>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </div>
 </div>
@@ -263,9 +126,10 @@
                 <div class="block">
                     <div class="section-title">
                         <h2>Giảng Viên NhiềU Năm Kinh Nghiệm</h2>
-                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                        <p>Đội ngũ Giảng viên tại Website là những người giàu KINH NGHIỆM THỰC TẾ. Họ là những người đã có nhiều năm làm thực tế các các loại hình doanh nghiệp khác nhau, cùng với kỹ năng giảng dạy hiện đại. Họ sẵn sàng chia sẻ với bạn những gì quý báu nhất trong sự nghiệp của mình. Và trên hết là lòng nhiệt thành, tận tâm của họ đối với từng học viên thân yêu!</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id </p>
+                    <p>Họ đến từ nhiều nơi khác nhau và quá trình làm việc công tác cũng khác nhau. Nhưng hơn hết tất cả họ đều cùng một niềm đam mê là truyền đạt những kiến thức thực tế họ tích cóp được trong thời gian đi làm của mình cho những thế hệ các bạn trẻ mới chập chững bước vào nghề.
+                        Họ đến Website để cùng chung thực hiện SỨ MỆNH mà Học Viện đã đề ra. Cùng trải nghiệm những GIÁ TRỊ CỐT LÕI nơi đây.</p>
                 </div>
             </div><!-- .col-md-7 close -->
             <div class="col-md-5 col-sm-12">
@@ -281,11 +145,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-6">
-                <h2 class="section-subtitle">WE BELIEVE IN GREAT IDEAS</h2>
-                <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p>Maecenas faucibus mollis interdum. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <a href="#" class="btn btn-view-works">View Works</a>
+                <h2 class="section-subtitle">Hãy là tất cả những gì bạn muốn </h2>
+                <p>Học để biết, học để làm, học để tự khẳng định mình, học để cùng chung sống.</p>
+                <p>Tri thức là chìa khóa mở cửa tương lai.</p>
+                <p>Không đọc sách thì cuộc sống thực là nặng nề</p>
+                <a href="course-list/1/lap-trinh.html" class="btn btn-view-works">Tham gia</a>
             </div>
         </div>
     </div>
@@ -299,9 +163,18 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h2>We design delightful digital experiences.</h2>
-                    <p>Read more about what we do and our philosophy of design. Judge for yourself The work and results <br> we’ve achieved for other clients, and meet our highly experienced Team who just love to design.</p>
-                    <a class="btn btn-main btn-solid-border" href="#">Tell Us Your Story</a>
+                    <h2>Đối tác của chúng tôi </h2>
+                    <ul>
+                        <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-01-free-img.png" alt=""></li>
+                        <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-02-free-img.png" alt=""></li>
+                        <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-03-free-img.png" alt=""></li>
+                        <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-04-free-img.png" alt=""></li>
+
+
+
+
+                    </ul>
+                    <a class="btn btn-main btn-solid-border" href="{{ route('contact-us') }}">Liên hệ</a>
                 </div>
             </div>
         </div>
@@ -314,7 +187,7 @@
         <div class="row">
             <div class="section-title text-center">
                 <h2>Về chúng tôi</h2>
-                <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, <br> there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics</p>
+                <p>Chúng tôi là một học liệu rải khắp mọi nơi trên thế giới, chúng tôi mang đến giá trị và cơ hội kinh doanh bằng cách kết nối đỘi ngũ giảng viên hàng đầu thế giới với một kênh phân phối gồm các đại lý công nghệ, nhà tích hợp hệ thống và nhà cung cấp dịch vụ.</p>
             </div>
         </div>
         <div class="row">
@@ -359,32 +232,32 @@
                             <i class="ion-quote"></i>
                             <p>"Em đã xem hết video của anh,dù trước đó em đọc cũng khá nhiều bài viết trên mạng nhưng mông lung vì không có thực hành . Video của anh không chỉ hướng dẫn tận tình mà còn thực hành từng bước cho những newbier như em, em hứa sau này nếu em phát triển được sự nghiệp trên MMO , nhất định em sẽ mời anh 1 ly cafe , bây giờ em chưa có gì em sẽ luôn click vào quảng cáo để ủng hộ anh, một lần nữa em xin chân thành cảm ơn anh . Chúc anh công tác tốt và nhiều niềm vui"</p>
                             <div class="user">
-                                <img src="images/item-img1.jpg" alt="Pepole">
-                                <p><span>Rose Ray</span> CEO-Themefisher</p>
+                                <img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/testimonial4-free-img-1.jpg" alt="Pepole">
+                                <p><span>Tran Quang Linh</span> CEO-LTStore</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="ion-quote"></i>
+                            <p>"Cám ơn Linh, những video rất hữu ích và rất hay. Chúc bạn thành công !"</p>
+                            <div class="user">
+                                <img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/testimonial3-free-img-1.jpg" alt="Pepole">
+                                <p><span>Le Van Long</span> CEO-Anti-Covid</p>
+                            </div>
+                        </div>
+                        <div>
+                            <i class="ion-quote"></i>
+                            <p>"Em đã xem hết video của anh,dù trước đó em đọc cũng khá nhiều bài viết trên mạng nhưng mông lung vì không có thực hành . Video của anh không chỉ hướng dẫn tận tình mà còn thực hành từng bước cho những newbier như em, em hứa sau này nếu em phát triển được sự nghiệp trên MMO , nhất định em sẽ mời anh 1 ly cafe , bây giờ em chưa có gì em sẽ luôn click vào quảng cáo để ủng hộ anh, một lần nữa em xin chân thành cảm ơn anh . Chúc anh công tác tốt và nhiều niềm vui"</p>
+                            <div class="user">
+                                <img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/testimonial2-free-img-1.jpg" alt="Pepole">
+                                <p><span>Rose Huan</span> CEO-Fuho</p>
                             </div>
                         </div>
                         <div>
                             <i class="ion-quote"></i>
                             <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
                             <div class="user">
-                                <img src="images/item-img1.jpg" alt="Pepole">
-                                <p><span>Rose Ray</span> CEO-Themefisher</p>
-                            </div>
-                        </div>
-                        <div>
-                            <i class="ion-quote"></i>
-                            <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
-                            <div class="user">
-                                <img src="images/item-img1.jpg" alt="Pepole">
-                                <p><span>Rose Ray</span> CEO-Themefisher</p>
-                            </div>
-                        </div>
-                        <div>
-                            <i class="ion-quote"></i>
-                            <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
-                            <div class="user">
-                                <img src="images/item-img1.jpg" alt="Pepole">
-                                <p><span>Rose Ray</span> CEO-Themefisher</p>
+                                <img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/testimonial1-free-img-1.jpg" alt="Pepole">
+                                <p><span>Kha Banh</span> CEO-Mua Quat</p>
                             </div>
                         </div>
                     </div>

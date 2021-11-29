@@ -16,13 +16,15 @@ class CourseService
 
     private function isPrice($request)
     {
-        if ($request->input('price') != 0 && $request->input('price_sale') != 0
-        && $request->input('price_sale') >= $request->input('price') ){
+        if (
+            $request->input('price') != 0 && $request->input('price_sale') != 0
+            && $request->input('price_sale') >= $request->input('price')
+        ) {
             Session::flash('error', 'Giảm giá thế thì lời đâu ra :( !');
             return false;
         }
 
-        if ($request->input('price') == 0 && $request->input('price_sale') > 0){
+        if ($request->input('price') == 0 && $request->input('price_sale') > 0) {
             Session::flash('error', 'Chưa có giá gốc bạn ơi !');
             return false;
         }
@@ -32,12 +34,12 @@ class CourseService
     public function store($request)
     {
         $isOk = $this->isPrice($request);
-        
+
         if ($isOk === false) {
             return false;
         }
 
-        try{
+        try {
             Course::create([
                 'name' => $request->input('name'),
                 'slug' => Str::slug($request->input('name'), '-'),
@@ -52,7 +54,7 @@ class CourseService
 
             Session::flash('success', 'Thêm khoá học thành công !');
             return true;
-        } catch (\Exception $err){
+        } catch (\Exception $err) {
             Session::flash('error', 'Thêm khoá học lỗi, mã lỗi: ' . $err->getMessage());
             return false;
         }
@@ -63,8 +65,39 @@ class CourseService
     public function getCourse()
     {
         return Course::with('category')
-                     ->where('active', 1)
-                     ->orderByDesc('id')->get();
+            ->where('active', 1)
+            ->orderByDesc('id')->get();
+    }
+
+    public function getCourseByID($id_category)
+    {
+        return Course::with('category')
+            ->where('active', 1)
+            ->where('id_category', $id_category)
+            ->orderByDesc('id')->paginate(6);
+    }
+
+    public function getCourseSelling()
+    {
+        return Course::with('category')
+            ->where('active', 1)
+            ->orderByDesc('id')->paginate(6);
+    }
+
+    public function getCourseDetail($id)
+    {
+        return Course::with('category')
+            ->where('active', 1)
+            ->where('id', $id)
+            ->get();
+    }
+
+    public function getCourseRelated()
+    {
+        return Course::with('category')
+            ->where('active', 1)
+            ->orderByDesc('id')
+            ->paginate(2);
     }
 
     public function update($course, $request)
@@ -81,7 +114,7 @@ class CourseService
     {
         $course = Course::where('id', $req->input('id'))->first();
 
-        if(!$course){
+        if (!$course) {
             Session::flash('error', 'Xoá lỗi, vui lòng kiểm tra lại !');
 
             return false;

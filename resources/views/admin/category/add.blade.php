@@ -18,7 +18,7 @@
                 <div class="col-sm-6">
                     <!-- text input -->
                     <div class="form-group">
-                        <label>Tên khoá học</label>
+                        <label>Tên danh mục khoá học</label>
                         <input name="name" type="text" class="form-control" placeholder="Enter ...">
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             </div>
 
             <div class="form-group">
-                <label>Chi tiết khoá học</label>
+                <label>Chi tiết danh mục khoá học</label>
                 <textarea id="editor" name="description" class="form-control" rows="3" placeholder="Enter ..."></textarea>
             </div>
 

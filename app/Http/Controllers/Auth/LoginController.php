@@ -44,7 +44,12 @@ class LoginController extends Controller
 
     public function index()
     {
-        return view('auth.login');
+        return view(
+            'auth.login',
+            [
+                'title' => "Đăng Nhập"
+            ]
+        );
     }
 
     public function store(Request $req)
@@ -57,8 +62,7 @@ class LoginController extends Controller
         if (Auth::attempt([
             'email' => $req->input('email'),
             'password' => $req->input('password')
-        ], $req->input('isAdmin')))
-        {
+        ], $req->input('isAdmin'))) {
             return redirect()->route('admin-home');
         }
 

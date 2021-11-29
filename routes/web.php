@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PageCourseController;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -23,23 +24,21 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('/')->group(function () {
     Route::get('/', [MainController::class, 'index'])->name('/');
-    Route::get('/home', [MainController::class, 'index'])->name('/home');
 
     Route::get('contact', [MainController::class, 'contact'])->name('contact-us');
 
-    Route::get('course-list', [CourseController::class, 'index'])->name('course-list');
+    Route::get('course-list/{id}/{slug}.html', [PageCourseController::class, 'index']);
+
+    Route::get('course-detail/{id}/{slug}.html', [PageCourseController::class, 'course_detail']);
 });
 
-Route::get('mycourse', function () {
-    return view('home.mycourse');
+Route::get('/blog-single', function () {
+    return view(
+        'home.course-detail',
+        ['title' => 'Hihi']
+    );
 });
-Route::get('/', function () {
-    return view('home');
-})->name('home');
 
-Route::get('course-detail', function () {
-    return view('home.course-detail');
-});
 
 Auth::routes();
 
@@ -50,9 +49,9 @@ Route::post('login', [LoginController::class, 'store']);
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::prefix('admin')->group(function () {
         Route::get('home', [AdminController::class, 'index'])->name('admin-home');
-        
+
         # Category
-        Route::prefix('categories')->group(function(){
+        Route::prefix('categories')->group(function () {
             Route::post('add', [CategoryController::class, 'store']);
             Route::get('add', [CategoryController::class, 'create'])->name('add-category');
             Route::get('list', [CategoryController::class, 'index'])->name('show-category');
@@ -62,7 +61,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         });
 
         # Course
-        Route::prefix('courses')->group(function(){
+        Route::prefix('courses')->group(function () {
             Route::get('add', [AdminCourseController::class, 'create'])->name('add-course');
             Route::post('add', [AdminCourseController::class, 'store']);
             Route::get('list', [AdminCourseController::class, 'show'])->name('show-course');
