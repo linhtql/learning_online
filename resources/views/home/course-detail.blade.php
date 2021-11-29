@@ -56,7 +56,7 @@
                     <div class="content">
                         <h4>{{$cr->name}} </h4>
                         <p>{{$cr->excerpt}}</p>
-                        <a href="/course-detail/{{$cr->id}}" class="btn btn-small">Xem thêm...</a>
+                        <a href="/course-detail/{{$cr->id}}/{{$cr->slug}}.html" class="btn btn-small">Xem thêm...</a>
                     </div>
                 </div>
             </div>

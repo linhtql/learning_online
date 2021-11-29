@@ -64,7 +64,7 @@
                 <h2 class="text-center">Khoá Học Bán Chạy Nhất</h2>
             </div>
             @foreach($courseSelling as $cs)
-            <div class="col-md-6 ">
+            <div class="col-md-4 ">
                 <div class="post">
                     <div class="post-thumb">
                         <a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html">
@@ -169,10 +169,6 @@
                         <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-02-free-img.png" alt=""></li>
                         <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-03-free-img.png" alt=""></li>
                         <li style="display: inline;"><img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/logos-04-free-img.png" alt=""></li>
-
-
-
-
                     </ul>
                     <a class="btn btn-main btn-solid-border" href="{{ route('contact-us') }}">Liên hệ</a>
                 </div>
@@ -254,7 +250,7 @@
                         </div>
                         <div>
                             <i class="ion-quote"></i>
-                            <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
+                            <p>"Từ bé đến giờ tôi mới thấy, dư lày."</p>
                             <div class="user">
                                 <img src="http://quangn3.sg-host.com/wp-content/uploads/2020/08/testimonial1-free-img-1.jpg" alt="Pepole">
                                 <p><span>Kha Banh</span> CEO-Mua Quat</p>
