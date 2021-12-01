@@ -30,4 +30,11 @@ class MainController extends Controller
             'title' => 'Liên hệ'
         ]);
     }
+
+    public function payment()
+    {
+        return view('home.payment', [
+            'title' => 'Thanh toán'
+        ]);
+    }
 }

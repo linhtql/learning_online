@@ -21,7 +21,7 @@
                         <li><span><i class="icon-calendar3"></i>Khuyến mãi :</span> {{$cd->price_sale}} VND</li>
                         <li><span><i class="icon-calendar3"></i>Thành tiền :</span>{{$cd->price- $cd->price_sale}} VND</li>
                         <li><span><i class="icon-link"></i>Đăng bởi:</span>Admin</li>
-                        <li><span class="btn btn-main"><a style="color: #fff;" href="">Thanh toán</a></span></li>
+                        <li><span class="btn btn-main"><a style="color: #fff;" href="/payment">Thanh toán</a></span></li>
                     </ul>
                 </div>
             </div>
