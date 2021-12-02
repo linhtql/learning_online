@@ -18,6 +18,7 @@
     <div class="container">
         <div class="row">
             <form id="contact-form">
+                @csrf
                 <div class="col-md-6 col-sm-12">
                     <div class="block">
                         <div class="form-group">
@@ -36,11 +37,11 @@
                         <div class="form-group-2">
                             <textarea name="user_message" class="form-control" rows="4" placeholder="Your Message"></textarea>
                         </div>
-                        <button class="btn btn-default" type="submit">Send Message</button>
+                        <button class="btn btn-default" type="submit">Gửi phản hồi</button>
                     </div>
                 </div>
-                <div class="error" id="error">Sorry Msg dose not sent</div>
-                <div class="success" id="success">Message Sent</div>
+                <div class="error" id="error">Có lỗi xảy ra, vui lòng thử lại;</div>
+                <div class="success" id="success">Đã gửi phản hồi</div>
             </form>
         </div>
         <div class="contact-box row">
