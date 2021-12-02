@@ -2,7 +2,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>{{$title}}</title>
+<title>{{$title ?? ''}}</title>
 
 <!-- Mobile Specific Meta-->
 <meta name="viewport" content="width=device-width, initial-scale=1">

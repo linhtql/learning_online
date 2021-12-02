@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\CourseController as AdminCourseController;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PageCourseController;
 use Illuminate\Routing\RouteRegistrar;
@@ -68,6 +69,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
             Route::get('edit/{course}', [AdminCourseController::class, 'edit']);
             Route::post('edit/{course}', [AdminCourseController::class, 'update']);
             Route::DELETE('destroy', [AdminCourseController::class, 'destroy']);
+        });
+
+        # User manager
+        Route::prefix('user')->group(function(){
+            Route::get('/', [UserManageController::class, 'index'])->name('user-manage');
+            Route::get('add/{id}', [UserManageController::class, 'create']);
+            Route::post('add/{id}', [UserManageController::class, 'store']);
         });
 
         # Upload

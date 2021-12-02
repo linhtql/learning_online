@@ -58,4 +58,27 @@ class Helper
 
     return $html;
   }
+
+  public static function user($users)
+  {
+    $html = '';
+
+    foreach ($users as $key => $user) {
+      $html .= '
+      <tr>
+        <td> ' . $user->id . ' </td>
+        <td> ' . $user->name . ' </td>
+        <td> ' . $user->email . ' </td>
+        <td> '. 'khoá học' .'</td>
+        <td> ' . $user->created_at . ' </td>
+        <td> 
+          <a class="btn btn-primary btn-sm" href="/admin/user/add/' . $user->id . '">
+            <i class="fas fa-edit"></i>
+          </a>
+        </td>  
+      </tr>';
+    }
+
+    return $html;
+  }
 }

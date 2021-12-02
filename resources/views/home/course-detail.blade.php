@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('content')
 
 <section class="portfolio-single-page section-sm">
