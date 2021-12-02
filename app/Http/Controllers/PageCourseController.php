@@ -32,4 +32,18 @@ class PageCourseController extends Controller
             'courseRelated' => $this->courseService->getCourseRelated()
         ]);
     }
+
+    public function mycourse()
+    {
+        return view('home.mycourse', [
+            'title' => 'Khoá học của tôi'
+        ]);
+    }
+
+    public function course_study()
+    {
+        return view('home.course-study', [
+            'title' => 'Học tập'
+        ]);
+    }
 }

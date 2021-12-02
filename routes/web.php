@@ -30,14 +30,14 @@ Route::prefix('/')->group(function () {
     Route::get('course-list/{id}/{slug}.html', [PageCourseController::class, 'index']);
 
     Route::get('course-detail/{id}/{slug}.html', [PageCourseController::class, 'course_detail']);
+
+    Route::get('payment', [MainController::class, 'payment'])->name('payment');
+
+    Route::get('study', [PageCourseController::class, 'course_study'])->name('study');
+
+    Route::get('mycourse', [PageCourseController::class, 'mycourse'])->name('mycourse');
 });
 
-Route::get('/blog-single', function () {
-    return view(
-        'home.course-detail',
-        ['title' => 'Hihi']
-    );
-});
 
 
 Auth::routes();

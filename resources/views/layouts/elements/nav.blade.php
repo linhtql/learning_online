@@ -30,7 +30,7 @@
                                     </ul>
                                 </li> -->
                                 <li><a href="course-list/1/lap-trinh.html">Khoá học</a></li>
-                                <li><a href="/mycourse">Khoá học của tôi</a></li>
+                                <li><a href="{{ route ('mycourse')}}">Khoá học của tôi</a></li>
                                 <!-- <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog <span class="ion-ios-arrow-down"></span></a>
                                     <ul class="dropdown-menu">
