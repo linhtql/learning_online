@@ -50,7 +50,7 @@
         </div>
         <div class="row">
             @foreach($courseRelated as $cr)
-            <div class="col-md-6">
+            <div class="col-md-4">
                 <div class="content">
                     <img class="img-responsive" src="{{$cr->thumb}}">
                     <div class="content">
