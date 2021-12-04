@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PageCourseController;
+use App\Http\Controllers\SendMailController;
 use Illuminate\Routing\RouteRegistrar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -32,9 +33,11 @@ Route::prefix('/')->group(function () {
 
     Route::get('course-detail/{id}/{slug}.html', [PageCourseController::class, 'course_detail']);
 
-    Route::get('payment', [MainController::class, 'payment'])->name('payment');
+    Route::get('payment/{id_user}/{id_course}', [MainController::class, 'payment'])->name('payment');
 
-    Route::get('study', [PageCourseController::class, 'course_study'])->name('study');
+
+
+    Route::get('study/{id_course}/{slug}.html', [PageCourseController::class, 'course_study']);
 
     Route::get('mycourse', [PageCourseController::class, 'mycourse'])->name('mycourse');
 });
@@ -72,7 +75,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
         });
 
         # User manager
-        Route::prefix('user')->group(function(){
+        Route::prefix('user')->group(function () {
             Route::get('/', [UserManageController::class, 'index'])->name('user-manage');
             Route::get('add/{id}', [UserManageController::class, 'create']);
             Route::post('add/{id}', [UserManageController::class, 'store']);

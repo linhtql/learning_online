@@ -17,4 +17,9 @@ class Enroll extends Model
     {
         return $this->hasOne(User::class, 'id', 'id_user');
     }
+
+    public function course()
+    {
+        return $this->hasOne(Course::class, 'id', 'id_course');
+    }
 }

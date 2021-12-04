@@ -4,6 +4,8 @@ namespace App\Http\Services\Course;
 
 use App\Category;
 use App\Course;
+use App\Enroll;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -68,7 +70,7 @@ class CourseService
             ->where('active', 1)
             ->orderByDesc('id')->get();
     }
-
+    //khoa hoc theo id
     public function getCourseByID($id_category)
     {
         return Course::with('category')
@@ -76,14 +78,14 @@ class CourseService
             ->where('id_category', $id_category)
             ->orderByDesc('id')->paginate(6);
     }
-
+    //danh sach cac khoa hoc ban chay
     public function getCourseSelling()
     {
         return Course::with('category')
             ->where('active', 1)
             ->orderByDesc('id')->paginate(6);
     }
-
+    //lay chi tiet khoa hoc
     public function getCourseDetail($id)
     {
         return Course::with('category')
@@ -91,7 +93,7 @@ class CourseService
             ->where('id', $id)
             ->get();
     }
-
+    //lay cac khoa hoc lien quan
     public function getCourseRelated()
     {
         return Course::with('category')
@@ -99,11 +101,33 @@ class CourseService
             ->orderByDesc('id')
             ->paginate(2);
     }
+    //lay thong tin khoa hoc
+    public function getInforCourse($id_course)
+    {
+        return Course::with('category')
+            ->where('id', $id_course)
+            ->get();
+    }
+
+    //cac khoa hoc da mua
+    public function getCourseBuyed($id_user)
+    {
+        return Enroll::with('user', 'course')
+            ->where('id_user', $id_user)
+            ->orderByDesc('id')->paginate(6);
+    }
+
+    // chi tiet khoa hoc
+    public function getStudy($id_course)
+    {
+        return Course::with('category')
+            ->where('id', $id_course)
+            ->get();
+    }
 
     public function update($course, $request)
     {
-        if ($course->name != $request->input('name'))
-        {
+        if ($course->name != $request->input('name')) {
             $course->slug = Str::slug($request->input('name'));
         }
 
@@ -115,7 +139,7 @@ class CourseService
         $course->excerpt = $request->input('excerpt');
         $course->thumb = $request->input('thumb');
         $course->description = $request->input('description');
-        
+
         $course->save();
 
         Session::flash('success', 'Cập nhật thông tin danh mục thành công!');
