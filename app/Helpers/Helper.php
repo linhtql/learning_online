@@ -69,7 +69,7 @@ class Helper
         <td> ' . $user->id . ' </td>
         <td> ' . $user->name . ' </td>
         <td> ' . $user->email . ' </td>
-        <td> '. 'khoá học' .'</td>
+        <td> ' . 'khoá học' . '</td>
         <td> ' . $user->created_at . ' </td>
         <td> 
           <a class="btn btn-primary btn-sm" href="/admin/user/add/' . $user->id . '">

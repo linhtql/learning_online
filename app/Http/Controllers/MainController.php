@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Services\Course\CourseService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
@@ -31,10 +32,11 @@ class MainController extends Controller
         ]);
     }
 
-    public function payment()
+    public function payment($id_user, $id_course)
     {
         return view('home.payment', [
-            'title' => 'Thanh toán'
+            'inforCourse' => $this->courseService->getInforCourse($id_course),
+            'user' => $id_user
         ]);
     }
 }

@@ -26,6 +26,31 @@
         - Tên ngân hàng: Ngân hàng Nông nghiệp và Phát triển Nông thôn Việt Nam - Chi nhánh Tân Chính - Nam Đà Nẵng.
     </pre>
 
+<form id="contact-form" action="">
+    @csrf
+    <div class="col-md-6 col-sm-12">
+        <div class="block">
+            <div class="form-group">
+                <input name="user_name" type="text" class="form-control" disabled value="{{$user}}">
+            </div>
+            <div class="form-group">
+                <input name="user_email" type="text" class="form-control" placeholder="Địa chỉ email">
+            </div>
+            <div class="form-group">
+                @foreach($inforCourse as $infor)
+                <input name="user_subject" type="text" class="form-control" disabled value="{{$infor->name}}">
+                @endforeach
+            </div>
+            <div class="form-group">
+                <input type="file" name="user_photo" id="">
+            </div>
+            <input class="btn btn-default" type="submit" value="Gửi phản hồi">
+        </div>
+    </div>
+    <div class="error" id="error">Có lỗi xảy ra, vui lòng thử lại;</div>
+    <div class="success" id="success">Đã gửi phản hồi</div>
+</form>
+
 <div class="text-center">
     <a class="btn btn-main" href="/">VỀ TRANG CHỦ</a>
 </div>
