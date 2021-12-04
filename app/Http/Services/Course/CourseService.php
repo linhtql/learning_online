@@ -6,6 +6,7 @@ use App\Category;
 use App\Course;
 use App\Enroll;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -158,5 +159,26 @@ class CourseService
         }
 
         return Course::where('id', $req->input('id'))->delete();
+    }
+
+    public function getCourseNum()
+    {
+        $users = Course::select(DB::raw("COUNT(*) as count"))
+      ->whereYear('created_at', date("Y"))
+      ->groupBy(DB::raw("Month(created_at)"))
+      ->pluck('count');
+
+    $months = Course::select(DB::raw("Month(created_at) as month"))
+      ->whereYear('created_at', date("Y"))
+      ->groupBy(DB::raw("Month(created_at)"))
+      ->pluck('month');
+
+    $data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    foreach ($months as $key => $month) {
+      --$month;
+      $data[$month] = $users[$key];
+    }
+
+    return $data;
     }
 }
