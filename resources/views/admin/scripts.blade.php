@@ -26,4 +26,4 @@ $.ajaxSetup({
 });
 </script>
 
-@yield('script')
+@yield('scripts')
