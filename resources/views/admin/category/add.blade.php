@@ -58,7 +58,7 @@
 
 @endsection
 
-@section('script')
+@section('scripts')
 <script>
     CKEDITOR.replace('editor');
 </script>

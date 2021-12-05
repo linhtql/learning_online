@@ -31,7 +31,8 @@
             <div class="col-md-12">
                 <div class="project-content mt-50">
                     <h2>Sơ lược</h2>
-                    <p>{{$cd->excerpt}}</p>
+                    <p><strong>{{$cd->excerpt}}</strong></p>
+                    <p>{!! $cd->description !!}</p>
                 </div>
             </div>
             <div class="col-md-5">
@@ -53,7 +54,7 @@
             @foreach($courseRelated as $cr)
             <div class="col-md-4">
                 <div class="content">
-                    <img class="img-responsive" src="{{$cr->thumb}}">
+                    <img class="img-responsive" src="{{$cr->thumb}}" style="width: auto; height: 300px;">
                     <div class="content">
                         <h4>{{$cr->name}} </h4>
                         <p>{{$cr->excerpt}}</p>

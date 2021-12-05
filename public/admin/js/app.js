@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 function removeRow(id, url) {
     if (confirm("Bạn có thực sự muốn xoá ?")) {
         $.ajax({
@@ -27,7 +33,7 @@ $("#image").change(function () {
         type: "POST",
         data: "JSON",
         data: form,
-        url: "/admin/upload/services",
+        url: "/upload/services",
         success: function (res) {
             if (res.error === false) {
                 $("#image_show").html(

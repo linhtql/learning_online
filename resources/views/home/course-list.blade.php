@@ -24,7 +24,6 @@
                         <div class="btn-group btn-group-toggle justify-content-center">
                             @foreach($category as $cate)
                             <a class="btn btn-sm btn-primary active" href="/course-list/{{$cate->id}}/{{$cate->slug}}.html">
-
                                 {{$cate->name}}
                             </a>
                             @endforeach
@@ -33,7 +32,7 @@
                     <div class="row shuffle-wrapper">
                         @foreach($courseList as $cl)
                         <div class="col-md-4 portfolio-item shuffle-item" data-groups="[&quot;design&quot;]">
-                            <img src="{{$cl->thumb}}" alt="">
+                            <img src="{{$cl->thumb}}" alt="" class="img-responsive" style="width: auto; height: 300px;">
                             <div class="portfolio-hover">
                                 <div class="portfolio-content">
                                     <a href="{{$cl->thumb}}" class="portfolio-popup"><i class="icon ion-search"></i></a>

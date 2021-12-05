@@ -5,6 +5,7 @@ namespace App\Http\Services\Course;
 use App\Category;
 use App\Course;
 use App\Enroll;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -101,13 +102,6 @@ class CourseService
             ->where('active', 1)
             ->orderByDesc('id')
             ->paginate(2);
-    }
-    //lay thong tin khoa hoc
-    public function getInforCourse($id_course)
-    {
-        return Course::with('category')
-            ->where('id', $id_course)
-            ->get();
     }
 
     //cac khoa hoc da mua

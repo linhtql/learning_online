@@ -1,7 +1,7 @@
 @extends('admin.main')
 
 @section('head')
-<script src="/ckeditor/ckeditor.js"></script>
+    <script src="/ckeditor/ckeditor.js"></script>
 @endsection
 
 @section('content')
@@ -93,7 +93,7 @@
 
 @endsection
 
-@section('script')
+@section('scripts')
 <script>
     CKEDITOR.replace('editor');
 </script>
