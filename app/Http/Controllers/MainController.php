@@ -31,12 +31,4 @@ class MainController extends Controller
             'title' => 'Liên hệ'
         ]);
     }
-
-    public function payment($id_user, $id_course)
-    {
-        return view('home.payment', [
-            'inforCourse' => $this->courseService->getInforCourse($id_course),
-            'user' => $id_user
-        ]);
-    }
 }

@@ -5,16 +5,16 @@
             <div class="col-md-12">
                 <div class="footer-manu">
                     <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">How it works</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Thông tin</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                        <li><a href="#">Hoạt động</a></li>
+                        <li><a href="#">Hỗ trợ</a></li>
+                        <li><a href="#">Chính sách</a></li>
                     </ul>
                 </div>
-                <p class="copyright">Copyright {{ date('Y') }} &copy; Design & Developed by <a href="http://www.themefisher.com">themefisher.com</a>. All rights reserved.
+                <p class="copyright">Copyright {{ date('Y') }} &copy;. All rights reserved.
                     <br>
-                    Get More <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Free Bootstrap Templates</a>
+                    Get More <a href="https://themefisher.com/free-bootstrap-templates/" target="_blank">Liên hệ vói chúng tôi</a>
                 </p>
             </div>
         </div>

@@ -21,7 +21,7 @@
                 <div class="post">
                     <div class="post-thumb">
                         <a href="blog-single.html">
-                            <img class="img-responsive" src="{{$cb->course->thumb}}" alt="">
+                            <img class="img-responsive" style="width: auto; height: 300px;" src="{{$cb->course->thumb}}" alt="$cb->course->name">
                         </a>
                     </div>
                     <h3 class="post-title"><a href="">{{$cb->course->name}}</a></h3>
@@ -40,7 +40,7 @@
                         </ul>
                     </div>
                     <div class="post-content">
-                        <p>{{$cb->course->excerpt}}</p>
+                        <p><strong>{{$cb->course->excerpt}}</strong></p>
                         <a href="/study/{{$cb->course->id}}/{{$cb->course->slug}}.html" class="btn btn-main">Vào học</a>
                     </div>
                 </div>

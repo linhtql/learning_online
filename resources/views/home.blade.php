@@ -1,6 +1,8 @@
 @extends('layouts.main')
 <!-- Slider Start -->
 @section('content')
+
+@include('alert')
 <section class="page-title bg-2">
     <div class="container">
         <div class="row">
@@ -68,7 +70,7 @@
                 <div class="post">
                     <div class="post-thumb">
                         <a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html">
-                            <img class="img-responsive" src="{{$cs->thumb}}" alt="">
+                            <img class="img-responsive" src="{{$cs->thumb}}" alt="{{ $cs->name }}" style="width: auto; height: 200px;">
                         </a>
                     </div>
                     <h3 class="post-title"><a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html">{{$cs->name}}</a></h3>
@@ -87,7 +89,7 @@
                         </ul>
                     </div>
                     <div class="post-content">
-                        <p>{{$cs->excerpt}}</p>
+                        <p><strong>{{$cs->excerpt}}</strong></p>
                         <a href="/course-detail/{{$cs->id}}/{{$cs->slug}}.html" class="btn btn-main">Xem thêm...</a>
                     </div>
                 </div>

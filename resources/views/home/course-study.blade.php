@@ -37,7 +37,7 @@
                         </ul>
                     </div>
                     <div class="post-thumb">
-                        <img class="img-responsive" src="{{$course->thumb}}" alt="">
+                        <img class="img-responsive" src="{{$course->thumb}}" alt="{{ $course->name }}" style="width: auto; height: 300px;">
                     </div>
                     <div class="post-content post-excerpt">
                         <p>{{$course->excerpt}}</p>

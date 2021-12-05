@@ -19,5 +19,6 @@
 <!-- Owl Carousel CSS -->
 <link rel="stylesheet" href="{{ asset('home/plugins/slick/slick.css') }}">
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <!-- Main Stylesheet -->
 <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">

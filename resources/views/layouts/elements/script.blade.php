@@ -16,5 +16,6 @@
 <!-- Google Map -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcABaamniA6OL5YvYSpB3pFMNrXwXnLwU&libraries=places"></script>
 <script src="/home/plugins/google-map/map.js"></script>
+<script src="/admin/js/app.js"></script>
 
 <script src="/home/js/script.js"></script>

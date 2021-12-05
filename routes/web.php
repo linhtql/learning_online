@@ -8,8 +8,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PageCourseController;
-use App\Http\Controllers\SendMailController;
-use Illuminate\Routing\RouteRegistrar;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -33,16 +32,13 @@ Route::prefix('/')->group(function () {
 
     Route::get('course-detail/{id}/{slug}.html', [PageCourseController::class, 'course_detail']);
 
-    Route::get('payment/{id_user}/{id_course}', [MainController::class, 'payment'])->name('payment');
-
-
+    Route::get('payment/{id_user}/{id_course}', [TransactionController::class, 'payment'])->name('payment');
+    Route::post('payment/{id_user}/{id_course}', [TransactionController::class, 'store']);
 
     Route::get('study/{id_course}/{slug}.html', [PageCourseController::class, 'course_study']);
 
     Route::get('mycourse', [PageCourseController::class, 'mycourse'])->name('mycourse');
 });
-
-
 
 Auth::routes();
 
@@ -80,8 +76,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
             Route::get('add/{id}', [UserManageController::class, 'create']);
             Route::post('add/{id}', [UserManageController::class, 'store']);
         });
-
-        # Upload
-        Route::post('upload/services', [UploadController::class, 'store']);
     });
 });
+
+
+# Upload
+Route::post('upload/services', [UploadController::class, 'store']);
