@@ -2,6 +2,8 @@
 
 namespace App\Helpers;
 
+use App\User;
+
 class Helper
 {
   public static function category($categories)
@@ -80,5 +82,10 @@ class Helper
     }
 
     return $html;
+  }
+
+  public static function getUserName($id) : string
+  {
+    return User::where('id', $id)->get('name');
   }
 }
