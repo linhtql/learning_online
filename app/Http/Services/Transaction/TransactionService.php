@@ -4,8 +4,10 @@ namespace App\Http\Services\Transaction;
 
 use App\Course;
 use App\Jobs\SendMail;
+use App\Mail\SendMail as MailSendMail;
 use App\Transaction;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class TransactionService
@@ -32,11 +34,11 @@ class TransactionService
             'thumb' => $req->input('thumb'),
             'note' => $req->input('note'),
         ]);
+        
+        $email = $req->input('user_email')??'';
+        Mail::to($email)->send(new MailSendMail(['data' => $req]));
+        Session::flash('success', 'Giao dịch đang được xử lí, hãy kiểm tra hộp thư của bạn !');
 
-        Session::flash('success', 'Giao dịch đang được xử lí, vui lòng chờ trong giây lát!');
-        
-        SendMail::dispatch($req->input('email'))->delay(now()->addSeconds(5));
-        
         } catch (\Exception $err) {
             Session::flash('error', 'Đặt hàng thất bại, mã lỗi: ' . $err->getMessage() . ' vui lòng liên hệ quản trị viên để giải quyết !');
             return false;

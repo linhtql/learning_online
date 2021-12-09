@@ -7,18 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class CourseOrder extends Mailable
+class SendMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $data;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data)
     {
-        //
+        $this->subject = "[Học online] Thông báo đã hoàn tật thủ tục thanh toán!";
+        $this->data = $data;
     }
 
     /**
@@ -28,6 +30,8 @@ class CourseOrder extends Mailable
      */
     public function build()
     {
-        return $this->view('home')->with('Hoàn tất việc gửi yêu cầu!');
+        return $this->subject($this->subject)->replyTo('firaxaxa@gmail.com', 'Lê Long')->view('emails.mailConfirm', [
+            'data' => $this->data
+        ]);
     }
 }

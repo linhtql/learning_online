@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UploadController;
 use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PageCourseController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -78,7 +79,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
         });
     });
 });
-
 
 # Upload
 Route::post('upload/services', [UploadController::class, 'store']);
