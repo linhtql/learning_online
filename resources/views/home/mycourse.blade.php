@@ -5,8 +5,17 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
+                    @if(count($courseBuyed)==0)
+                    {
+                    <h1>Bạn chưa mua khoá học nào !</h1>
+                    <a href="../../course-list/1/lap-trinh.html" class="btn btn-main">Mua khoá học</a>
+                    }
+                    @else
                     <h1>Khoá học của tôi</h1>
                     <p>Học nữa, học mãi !</p>
+                    @endif
+
+
                 </div>
             </div>
         </div>
@@ -16,15 +25,16 @@
 <div class="page-wrapper">
     <div class="container">
         <div class="row">
+
             @foreach($courseBuyed as $cb)
             <div class="col-md-4 ">
                 <div class="post">
                     <div class="post-thumb">
-                        <a href="blog-single.html">
+                        <a href="/study/{{$cb->course->id}}/{{$cb->course->slug}}.html">
                             <img class="img-responsive" style="width: auto; height: 300px;" src="{{$cb->course->thumb}}" alt="$cb->course->name">
                         </a>
                     </div>
-                    <h3 class="post-title"><a href="">{{$cb->course->name}}</a></h3>
+                    <h3 class="post-title"><a href="/study/{{$cb->course->id}}/{{$cb->course->slug}}.html">{{$cb->course->name}}</a></h3>
                     <div class="post-meta">
                         <ul>
                             <li>
@@ -50,6 +60,7 @@
 
 
         </div>
+
     </div>
 
     @endsection
