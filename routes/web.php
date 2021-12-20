@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\UserManageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PageCourseController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,8 @@ Route::prefix('/')->group(function () {
     Route::get('study/{id_course}/{slug}.html', [PageCourseController::class, 'course_study']);
 
     Route::get('mycourse', [PageCourseController::class, 'mycourse'])->name('mycourse');
+
+    Route::get('user-detail', [UserController::class, 'user_detail']);
 });
 
 Auth::routes();

@@ -28,22 +28,27 @@ class PageCourseController extends Controller
 
     public function course_detail($id)
     {
-        $id_user = Auth::user()->name;
+
         return view('home.course-detail', [
             'title' => 'Khoá học',
             'courseDetail' => $this->courseService->getCourseDetail($id),
             'courseRelated' => $this->courseService->getCourseRelated(),
-            'id_user' => $id_user
         ]);
     }
 
     public function mycourse()
     {
-        $id_user = Auth::user()->id;
-        return view('home.mycourse', [
-            'title' => 'Khoá học của tôi',
-            'courseBuyed' => $this->courseService->getCourseBuyed($id_user)
-        ]);
+        if (Auth::user() == null) {
+            return view('home.mycourse-none', [
+                'title' => 'Khoá học của tôi'
+            ]);
+        } else {
+            $id_user = Auth::user()->id;
+            return view('home.mycourse', [
+                'title' => 'Khoá học của tôi',
+                'courseBuyed' => $this->courseService->getCourseBuyed($id_user)
+            ]);
+        }
     }
 
     public function course_study($id_course)

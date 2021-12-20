@@ -22,7 +22,11 @@
                         <li><span><i class="icon-calendar3"></i>Khuyến mãi :</span> {{$cd->price_sale}} VND</li>
                         <li><span><i class="icon-calendar3"></i>Thành tiền :</span>{{$cd->price- $cd->price_sale}} VND</li>
                         <li><span><i class="icon-link"></i>Đăng bởi:</span>Admin</li>
-                        <li><span class="btn btn-main"><a style="color: #fff;" href="/payment/{{$id_user}}/{{$cd->id}}">Thanh toán</a></span></li>
+                        @if(Auth::user()==null)
+                        <li><span class="btn btn-main"><a style="color: #fff;" href="/login">Thanh toán</a></span></li>
+                        @else
+                        <li><span class="btn btn-main"><a style="color: #fff;" href="/payment/{{Auth::user()->id}}/{{$cd->id}}">Thanh toán</a></span></li>
+                        @endif
                     </ul>
                 </div>
             </div>
